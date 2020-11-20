@@ -172,7 +172,7 @@ class Vm_GitCommit extends Module
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
                 "Content-Type: application/json",
-                "Authorization: Bearer enter your own token"
+                "Authorization: Bearer e60cb9568fd2bacd12c6b7c3e01632914f74c6c0"
             ),
         ));
         
@@ -223,7 +223,7 @@ class Vm_GitCommit extends Module
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
                 "Content-Type: application/json",
-                "Authorization: Bearer enter your own token"
+                "Authorization: Bearer e60cb9568fd2bacd12c6b7c3e01632914f74c6c0"
             ),
         ));
         
@@ -240,7 +240,7 @@ class Vm_GitCommit extends Module
 
         
         $this->context->smarty->assign(['gitCommit' => $gitCommit]);
-        $pathOfView = 'F:\www\wamp64\www\gitcommit\modules\vm_gitcommit\views\templates\front\\';
+        //$pathOfView = 'F:\www\wamp64\www\gitcommit\modules\vm_gitcommit\views\templates\front\\';
         return $this->display(_MODULE_DIR_, 'vm_gitcommit/views/templates/front/display.tpl');        //_MODULE_DIR_	-> /prefix/modules/
         //return $this->display($pathOfView, 'display.tpl');  
         
