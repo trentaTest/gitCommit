@@ -3,6 +3,7 @@
 if (!defined('_PS_VERSION_')) { //Mandatory -> check that the environment have been loaded
     exit;
 }
+
 class Vm_GitCommit extends Module
 {
     public function __construct()
@@ -154,45 +155,12 @@ class Vm_GitCommit extends Module
     }
     public function hookDisplayHome($params)
     {
-        $ch = curl_init();
-        
-        $certificate_location = 'F:\www\wamp64\www\gitcommit\modules\vm_gitcommit\cert\cacert-2020-10-14.pem'; //mandatory to create a curl connection
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, $certificate_location);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $certificate_location);
-
-        curl_setopt($ch, CURLOPT_USERAGENT, 'trentaTest');     
-        curl_setopt_array($ch, array(
-            CURLOPT_URL => "https://api.github.com/repos/trentaTest/gitCommit/commits",
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "GET",
-            CURLOPT_HTTPHEADER => array(
-                "Content-Type: application/json",
-                "Authorization: Bearer e60cb9568fd2bacd12c6b7c3e01632914f74c6c0"
-            ),
-        ));
-        
-        $response = curl_exec($ch);
-        /* To debug curl connection
-        $err = curl_error($ch);
-        curl_close($ch);
-        $errNo = curl_errno($ch);
-        $description = curl_strerror(curl_errno($ch)); 
-        var_dump($description);
-         */
-
-        $gitCommit = json_decode($response);
-
         $this->context->smarty->assign([
-            'gitCommit' => $gitCommit,
             'vm_page_name' => Configuration::get('VM_GITCOMMIT_DEPOSITE'),
             'vm_page_link' => $this->context->link->getModuleLink('vm_gitcommit', 'display'),
         ]);
         var_dump(__TRAIT__);
+        //return $this->display(__FILE__, 'display.tpl');
         return $this->display(__FILE__, 'vm_gitcommit.tpl');
     }
     public function hookDisplayHeader()
@@ -203,46 +171,4 @@ class Vm_GitCommit extends Module
             ['server' => 'remote', 'position' => 'head', 'priority' => 150]
         );
     }
-    public function GetApiGitHub() 
-    {
-        $ch = curl_init();
-        
-        $certificate_location = 'F:\www\wamp64\www\gitcommit\modules\vm_gitcommit\cert\cacert-2020-10-14.pem'; //mandatory to create a curl connection
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, $certificate_location);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $certificate_location);
-
-        curl_setopt($ch, CURLOPT_USERAGENT, 'trentaTest');     
-        curl_setopt_array($ch, array(
-            CURLOPT_URL => "https://api.github.com/repos/trentaTest/gitCommit/commits",
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 100,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "GET",
-            CURLOPT_HTTPHEADER => array(
-                "Content-Type: application/json",
-                "Authorization: Bearer e60cb9568fd2bacd12c6b7c3e01632914f74c6c0"
-            ),
-        ));
-        
-        $response = curl_exec($ch);
-        /* To debug curl connection
-        $err = curl_error($ch);
-        curl_close($ch);
-        $errNo = curl_errno($ch);
-        $description = curl_strerror(curl_errno($ch)); 
-        var_dump($description);
-         */
-
-        $gitCommit = json_decode($response);
-
-        
-        $this->context->smarty->assign(['gitCommit' => $gitCommit]);
-        //$pathOfView = 'F:\www\wamp64\www\gitcommit\modules\vm_gitcommit\views\templates\front\\';
-        return $this->display(_MODULE_DIR_, 'vm_gitcommit/views/templates/front/display.tpl');        //_MODULE_DIR_	-> /prefix/modules/
-        //return $this->display($pathOfView, 'display.tpl');  
-        
-    }    
 }
