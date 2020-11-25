@@ -159,8 +159,6 @@ class Vm_GitCommit extends Module
             'vm_page_name' => Configuration::get('VM_GITCOMMIT_DEPOSITE'),
             'vm_page_link' => $this->context->link->getModuleLink('vm_gitcommit', 'display'),
         ]);
-        var_dump(__TRAIT__);
-        //return $this->display(__FILE__, 'display.tpl');
         return $this->display(__FILE__, 'vm_gitcommit.tpl');
     }
     public function hookDisplayHeader()

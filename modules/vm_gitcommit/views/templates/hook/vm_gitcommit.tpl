@@ -2,7 +2,6 @@
 <div id="vm_gitcommit_block_home" class="block">
   <h4>{l s='Module Git Commit' d='Modules.Vm_GitCommit'}</h4>
   <div class="block_content">
-    <div>{$gitCommit|@var_dump}</div>
     <a href="{$vm_page_link}">
            {if isset($vm_page_name) && $vm_page_name}
                {$vm_page_name}
