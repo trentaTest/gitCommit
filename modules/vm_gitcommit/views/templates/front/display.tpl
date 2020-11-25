@@ -5,9 +5,10 @@
     <div>
         <table>
         {foreach from=$gitCommits item=gitCommit}
-            <tr>
-                {$gitCommit|@var_dump}
-            </tr>
+            <li>
+                {$gitCommit->commit->author->name} {*show author of commits*}
+                {$gitCommit->commit->author->date}
+            </li>
         {/foreach}
         {*$gitCommits|@var_dump*}
         </table>
