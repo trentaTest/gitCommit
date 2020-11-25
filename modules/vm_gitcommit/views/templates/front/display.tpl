@@ -2,29 +2,29 @@
  
 {block name="page_content"}
     
-    <div>
-        <table>
+    <ul>
+        {*$gitCommits|@var_dump*}        
         {foreach from=$gitCommits item=gitCommit}
             <li>
                 {$gitCommit->commit->author->name} {*show author of commits*}
                 {$gitCommit->commit->author->date}
             </li>
         {/foreach}
-        {*$gitCommits|@var_dump*}
-        </table>
-    </div>
+    </ul>
     <ul>
         <li>
             {l s='Number of products' d='Modules.Vm_GitCommit'}&nbsp;{$nb_product}
         </li>
+    </ul>
+    <ul>
         <li>
             Categories:
             <ul>
                 {foreach from=$categories item=cat}
                     <li>{$cat['name']}</li>
                 {/foreach}
+                <li>{$shop_name}</li>
             </ul>
         </li>
-        <li>{$shop_name}</li>
     </ul>
 {/block}
