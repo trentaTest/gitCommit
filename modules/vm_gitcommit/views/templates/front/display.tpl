@@ -1,8 +1,17 @@
 {extends file='page.tpl'}  
  
 {block name="page_content"}
-
-    <div>{$gitCommit|@var_dump}</div>
+    
+    <div>
+        <table>
+        {foreach from=$gitCommits item=gitCommit}
+            <tr>
+                {$gitCommit|@var_dump}
+            </tr>
+        {/foreach}
+        {*$gitCommits|@var_dump*}
+        </table>
+    </div>
     <ul>
         <li>
             {l s='Number of products' d='Modules.Vm_GitCommit'}&nbsp;{$nb_product}
