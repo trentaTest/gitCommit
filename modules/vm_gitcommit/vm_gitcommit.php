@@ -41,8 +41,8 @@ class Vm_GitCommit extends Module
             !$this->registerHook('home') ||
             !$this->registerHook('header') ||
             !Configuration::updateValue('VM_GITCOMMIT_ACCOUNT', 'Compte GitHub')||
-            !Configuration::updateValue('VM_GITCOMMIT_DEPOSITE', 'dépot GitHub')||
-            !Configuration::updateValue('VM_GITCOMMIT_COMMITCOUNT', 'Nombre de commit GitHub')
+            !Configuration::updateValue('VM_GITCOMMIT_DEPOSITE', 'Dépot GitHub')||
+            !Configuration::updateValue('VM_GITCOMMIT_TOKEN', 'Token GitHub')
         ) {
             return false;
         }
@@ -60,7 +60,7 @@ class Vm_GitCommit extends Module
         if (!parent::uninstall() ||
             !Configuration::deleteByName('VM_GITCOMMIT_ACCOUNT') || //allow to check the BDD, table ps_configuration
             !Configuration::deleteByName('VM_GITCOMMIT_DEPOSITE') || 
-            !Configuration::deleteByName('VM_GITCOMMIT_COMMITCOUNT')
+            !Configuration::deleteByName('VM_GITCOMMIT_TOKEN')
         ) {
             return false;
         }
@@ -74,20 +74,20 @@ class Vm_GitCommit extends Module
         if (Tools::isSubmit('btnSubmit')) {
             $accountGitHUb = strval(Tools::getValue('VM_GITCOMMIT_ACCOUNT'));
             $depositeGitHub = strval(Tools::getValue('VM_GITCOMMIT_DEPOSITE'));
-            $commitNumbers = strval(Tools::getValue('VM_GITCOMMIT_COMMITCOUNT'));
+            $gitToken = strval(Tools::getValue('VM_GITCOMMIT_TOKEN'));
             if (
                 !$accountGitHUb||
                 empty($accountGitHUb)||
                 !$depositeGitHub||
                 empty($depositeGitHub)||
-                !$commitNumbers||
-                empty($commitNumbers)
+                !$gitToken||
+                empty($gitToken)
             ) {
                 $output .= $this->displayError($this->l('Invalid Configuration value')); // .= php method to appends in $output
             } else {
                 Configuration::updateValue('VM_GITCOMMIT_ACCOUNT', $accountGitHUb); 
                 Configuration::updateValue('VM_GITCOMMIT_DEPOSITE', $depositeGitHub);
-                Configuration::updateValue('VM_GITCOMMIT_COMMITCOUNT', $commitNumbers); 
+                Configuration::updateValue('VM_GITCOMMIT_TOKEN', $gitToken); 
                 $output .= $this->displayConfirmation($this->l('Settings updated'));
             }
         }
@@ -123,7 +123,7 @@ class Vm_GitCommit extends Module
                     array(
                         'type' => 'text',
                         'label' => $this->l('Configuration value'),
-                        'name' => 'VM_GITCOMMIT_COMMITCOUNT',
+                        'name' => 'VM_GITCOMMIT_TOKEN',
                         'size' => 20,
                         'required' => true
                     )
@@ -149,7 +149,7 @@ class Vm_GitCommit extends Module
         // Charge la valeur de VM_GITCOMMIT_ACCOUNT depuis la base
         $helper->fields_value['VM_GITCOMMIT_ACCOUNT'] = Configuration::get('VM_GITCOMMIT_ACCOUNT');
         $helper->fields_value['VM_GITCOMMIT_DEPOSITE'] = Configuration::get('VM_GITCOMMIT_DEPOSITE');
-        $helper->fields_value['VM_GITCOMMIT_COMMITCOUNT'] = Configuration::get('VM_GITCOMMIT_COMMITCOUNT');
+        $helper->fields_value['VM_GITCOMMIT_TOKEN'] = Configuration::get('VM_GITCOMMIT_TOKEN');
 
         return $helper->generateForm(array($form));
     }

@@ -7,7 +7,12 @@
         {foreach from=$gitCommits item=gitCommit}
             <li>
                 {$gitCommit->commit->author->name} {*show author of commits*}
+            </li>
+            <li>
                 {$gitCommit->commit->author->date}
+            </li>
+            <li>
+                {$gitCommit->commit->message}
             </li>
         {/foreach}
     </ul>

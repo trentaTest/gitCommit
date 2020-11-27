@@ -6,6 +6,14 @@
     <language>fr</language>
      <atom:link href="https://www.prestashop.com/fr/blog/feed.xml" rel="self" type="application/rss+xml" />
       <item>
+    <title>Augmentez votre taux de conversion grâce à dix techniques de copywriting</title>
+    <link>https://www.prestashop.com/fr/blog/taux-conversion-copywriting</link>
+    <description>Que désire un e-commerçant ? Vendre les produits ou services de sa boutique en ligne !</description>
+     <pubDate>Wed, 25 Nov 2020 15:03:06 +0100</pubDate>
+ <dc:creator>YATEO</dc:creator>
+ <guid isPermaLink="false">https://www.prestashop.com/fr/blog/taux-conversion-copywriting</guid>
+  </item>
+  <item>
     <title>Créer votre e-boutique avec le Starter pack e-commerce PrestaShop</title>
     <link>https://www.prestashop.com/fr/blog/starter-pack-e-commerce</link>
     <description>Dès l’annonce du nouveau confinement et la fermeture des commerces physiques dits non essentiels, Bruno Le Maire est intervenu pour informer des mesures de soutien aux entreprises et en particulier</description>
@@ -76,14 +84,6 @@
      <pubDate>Thu, 05 Nov 2020 17:27:07 +0100</pubDate>
  <dc:creator>YATEO</dc:creator>
  <guid isPermaLink="false">https://www.prestashop.com/fr/blog/offres-groupees-produits</guid>
-  </item>
-  <item>
-    <title>Les paiements de A à Z - Chapitre 3 : Accepter et gérer les moyens de paiement locaux</title>
-    <link>https://www.prestashop.com/fr/blog/gerer-paiement-locaux</link>
-    <description>Pour ce 3e chapitre de notre saga dédiée au paiement, nous vous proposons de nous arrêter sur les moyens utilisés par les consommateurs pour rég</description>
-     <pubDate>Mon, 02 Nov 2020 10:44:53 +0100</pubDate>
- <dc:creator>Lucie Gimon FR</dc:creator>
- <guid isPermaLink="false">https://www.prestashop.com/fr/blog/gerer-paiement-locaux</guid>
   </item>
   </channel>
 </rss>
