@@ -4,13 +4,12 @@ class vm_gitcommitdisplayModuleFrontController extends ModuleFrontController
     public function initContent()
     {
         parent::initContent();
-
-        $request = 'SELECT `value` FROM '._DB_PREFIX_.'configuration WHERE name="VM_GITCOMMIT_TOKEN"';
-        $gitToken = Db::getInstance()->getValue($request);
         
+        $gitToken = Db::getInstance()->getValue('SELECT value FROM '._DB_PREFIX_.'configuration WHERE name="VM_GITCOMMIT_TOKEN"');
+      
         $ch = curl_init();
+        
         $certificate_location = 'F:\www\wamp64\www\gitcommit\modules\vm_gitcommit\cert\cacert-2020-10-14.pem'; //mandatory to create a curl connection
-        /** @var string|false $salesCount */
 
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, $certificate_location);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $certificate_location);
@@ -28,8 +27,7 @@ class vm_gitcommitdisplayModuleFrontController extends ModuleFrontController
                 "Content-Type: application/json",
                 "Authorization: Bearer ".$gitToken
             ),
-        ));
-        
+        ));       
         $response = curl_exec($ch);
         /* To debug curl connection
         $err = curl_error($ch);
@@ -38,12 +36,11 @@ class vm_gitcommitdisplayModuleFrontController extends ModuleFrontController
         $description = curl_strerror(curl_errno($ch)); 
         var_dump($description);
         */
-
         $gitCommits = json_decode($response);
         
         $this->context->smarty->assign(array(
-            'nb_product' => Db::getInstance()->getValue('SELECT COUNT(*) FROM '._DB_PREFIX_.'product'),
-            'categories' => Db::getInstance()->executeS('SELECT `name` FROM `'._DB_PREFIX_.'category_lang` WHERE `id_lang` = '.(int)$this->context->language->id),
+//            'nb_product' => Db::getInstance()->getValue('SELECT COUNT(*) FROM '._DB_PREFIX_.'product'),
+//            'categories' => Db::getInstance()->executeS('SELECT `name` FROM `'._DB_PREFIX_.'category_lang` WHERE `id_lang` = '.(int)$this->context->language->id),
             'shop_name' => Configuration::get('PS_SHOP_NAME'),
             'gitCommits' => $gitCommits
         ));
