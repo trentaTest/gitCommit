@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2020-11-27 13:00:45
+/* Smarty version 3.1.33, created on 2020-11-18 18:12:39
   from 'F:\www\wamp64\www\gitcommit\admin7719fntrc\themes\new-theme\template\components\layout\nav_bar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5fc0ea6d4b9038_87787047',
+  'unifunc' => 'content_5fb556077337e2_49867031',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e9f262bc7dcc60e3ec17516a14b7c505dca610a8' => 
     array (
       0 => 'F:\\www\\wamp64\\www\\gitcommit\\admin7719fntrc\\themes\\new-theme\\template\\components\\layout\\nav_bar.tpl',
-      1 => 1605901621,
+      1 => 1605710218,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5fc0ea6d4b9038_87787047 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fb556077337e2_49867031 (Smarty_Internal_Template $_smarty_tpl) {
 ?><nav class="nav-bar d-none d-md-block">
   <span class="menu-collapse" data-toggle-url="<?php echo $_smarty_tpl->tpl_vars['toggle_navigation_url']->value;?>
 ">
